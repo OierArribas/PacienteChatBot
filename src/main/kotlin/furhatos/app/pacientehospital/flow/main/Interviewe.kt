@@ -8,13 +8,14 @@ import furhatos.app.newskill.nlu.intents.Sintoma_Zona_Describir
 import furhatos.app.newskill.nlu.intents.Sintoma_Zona_Si_No
 import furhatos.app.newskill.nlu.intents.Suceso_Si_No
 import furhatos.app.pacientehospital.flow.Parent
+import furhatos.app.pacientehospital.utils.EntityHelper
 import furhatos.flow.kotlin.*
 import furhatos.nlu.Intent
 
 
 val Interviewe: State = state(Parent) {
 
-
+    val helper = EntityHelper()
     var sintoma = ""
     var zona = ""
     var suceso = ""
@@ -24,7 +25,7 @@ val Interviewe: State = state(Parent) {
 
     onEntry {
         furhat.say("Interviewe")
-        furhat.listen()
+        furhat.listen(timeout = 15000)
 
     }
 
@@ -36,30 +37,37 @@ val Interviewe: State = state(Parent) {
 
         lastIntent = Sintoma_Zona_Si_No()
 
-        furhat.say(it.intent.Zona.toString())
+        furhat.say(helper.obtenerTermino(it.intent.Zona.toString()))
         furhat.say(it.intent.Sintoma.toString())
-        furhat.say(it.intent.Tiempo.toString())
+        //furhat.say(it.intent.Tiempo.toString())
 
         if (it.intent.Sintoma != null){
-            sintoma = it.intent.Sintoma.toString()
+            sintoma = helper.obtenerTermino(it.intent.Sintoma.toString())
         }
 
         if(it.intent.Zona != null) {
-            zona = it.intent.Zona.toString()
+            zona = helper.obtenerTermino(it.intent.Zona.toString())
         }
 
-        if (zona == "pie") {
+        if (helper.obtenerTermino(it.intent.Zona.toString()) == "pie") {
             if (sintoma == "dolor"){
-                furhat.say("Mmm no, mas bien siento entumecimiento en el pies")
+                furhat.say("Mmm no, mas bien siento entumecimiento en el pie")
             }else if (sintoma == "entumecimiento"){
                 furhat.say("Si, eso es")
             } else {
                 furhat.say("No, no siento ese $sintoma en el pie")
             }
+        } else {
+            when(sintoma) {
+                "escalofríos", "fiebre" -> furhat.say("no, no he sufrido fiebre o escalofrios")
+                "torpeza" -> furhat.say("Si! Noto las manos debiles, por ejemplo me cuesta abrir latas")
+                "hipertension" , "hipercolesterolemia"-> furhat.say("Si, he sufrido $sintoma")
+
+
+                else ->  furhat.say("No" )
+            }
         }
-        else {
-            furhat.say("No siento nada en $zona")
-        }
+
 
         reentry()
     }
@@ -69,24 +77,19 @@ val Interviewe: State = state(Parent) {
         furhat.say(it.intent.Zona.toString())
 
         if (it.intent.Sintoma != null){
-            sintoma = it.intent.Sintoma.toString()
+            sintoma = helper.obtenerTermino(it.intent.Sintoma.toString())
         }
+
         if(it.intent.Zona != null) {
-            zona = it.intent.Zona.toString()
+            zona = helper.obtenerTermino(it.intent.Zona.toString())
         }
 
 
-        if (zona == "pie") {
-            if (sintoma == "entumecimiento"){
-                furhat.say("Empezé a notarlo hace dos dias")
-            } else {
-                furhat.say("No, no he sentido ese $sintoma en el pie")
-            }
-        } else if (sintoma == "falta de equilibrio") {
+
+        if (sintoma == "entumecimiento"){
+            furhat.say("Empezé a notarlo hace dos dias")
+        } else {
             furhat.say("No, no he tenido $sintoma ultimamente")
-        }
-        else {
-            furhat.say("No he sentido nada en $zona")
         }
 
 
@@ -100,13 +103,15 @@ val Interviewe: State = state(Parent) {
 
 
         if (it.intent.Sintoma != null){
-            sintoma = it.intent.Sintoma.toString()
+            sintoma = helper.obtenerTermino(it.intent.Sintoma.toString())
         }
+
+
 
         if (sintoma == "entumecimiento"){
             furhat.say("Lo noto en los pies")
         } else {
-            furhat.say("No he notado ese $sintoma")
+            furhat.say("No he tenido $sintoma")
         }
 
         reentry()
