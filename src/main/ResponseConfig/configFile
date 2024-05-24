@@ -1,0 +1,18 @@
+Intent:Sintoma_Zona_Si_No
+
+Entities:dolor
+No, no siento ningun dolor
+
+Entities:dolor,pies
+No, no siento dolor en ninguna parte
+
+Entities: Entumecimiento
+Si, siento dolor en los pies
+
+Intent:Sintoma_Cuando
+
+Entities:entumecimiento
+Desde hace dos semanas
+
+Entities:dolor
+Perdona, no he sentido ningun dolor en ningun momento.

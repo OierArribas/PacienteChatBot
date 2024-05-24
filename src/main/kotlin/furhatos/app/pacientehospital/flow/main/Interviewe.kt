@@ -1,8 +1,6 @@
 package furhatos.app.pacientehospital.flow.main
 
 
-import furhatos.app.newskill.nlu.entities.Sintoma
-import furhatos.app.newskill.nlu.entities.Zona
 import furhatos.app.newskill.nlu.intents.Sintoma_Cuando
 import furhatos.app.newskill.nlu.intents.Sintoma_Zona_Describir
 import furhatos.app.newskill.nlu.intents.Sintoma_Zona_Si_No
@@ -11,6 +9,8 @@ import furhatos.app.pacientehospital.flow.Parent
 import furhatos.app.pacientehospital.utils.EntityHelper
 import furhatos.flow.kotlin.*
 import furhatos.nlu.Intent
+import importResponseMap
+import imprimirMapa
 
 
 val Interviewe: State = state(Parent) {
@@ -20,11 +20,26 @@ val Interviewe: State = state(Parent) {
     var zona = ""
     var suceso = ""
 
+    val clave = listOf<String>()
+    var valor: String
+
+    var mapaRespuestas: MutableMap<List<String>, String> =  mutableMapOf(
+    listOf("") to ""
+)
+
     var lastIntent : Intent = Sintoma_Zona_Si_No()
+
+    init {
+        mapaRespuestas = importResponseMap()
+        imprimirMapa(mapaRespuestas)
+    }
+
 
 
     onEntry {
+
         furhat.say("Interviewe")
+
         furhat.listen(timeout = 15000)
 
     }
@@ -43,12 +58,25 @@ val Interviewe: State = state(Parent) {
 
         if (it.intent.Sintoma != null){
             sintoma = helper.obtenerTermino(it.intent.Sintoma.toString())
+            //print(sintoma)
+            //println("hola")
+            clave.plus(sintoma)
         }
 
         if(it.intent.Zona != null) {
             zona = helper.obtenerTermino(it.intent.Zona.toString())
+            clave.plus(zona)
         }
 
+        for (v in clave){
+            println(v)
+        }
+        //println(clave)
+        valor = mapaRespuestas[clave].toString()
+        print(mapaRespuestas[clave].toString())
+        furhat.say(valor)
+
+        /*
         if (helper.obtenerTermino(it.intent.Zona.toString()) == "pie") {
             if (sintoma == "dolor"){
                 furhat.say("Mmm no, mas bien siento entumecimiento en el pie")
@@ -67,6 +95,8 @@ val Interviewe: State = state(Parent) {
                 else ->  furhat.say("No" )
             }
         }
+        */
+
 
 
         reentry()
