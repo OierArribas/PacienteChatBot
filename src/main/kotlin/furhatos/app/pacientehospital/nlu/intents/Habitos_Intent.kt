@@ -13,6 +13,13 @@ class Habito_Describir (
     }
 }
 
+class Habito_Adiccion_Describir () : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
 class Habito_Si_No (
     val Habito : Habito? = null,
 ) : Intent() {

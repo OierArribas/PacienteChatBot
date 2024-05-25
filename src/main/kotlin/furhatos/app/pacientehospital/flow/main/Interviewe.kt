@@ -76,28 +76,6 @@ val Interviewe: State = state(Parent) {
         print(mapaRespuestas[clave].toString())
         furhat.say(valor)
 
-        /*
-        if (helper.obtenerTermino(it.intent.Zona.toString()) == "pie") {
-            if (sintoma == "dolor"){
-                furhat.say("Mmm no, mas bien siento entumecimiento en el pie")
-            }else if (sintoma == "entumecimiento"){
-                furhat.say("Si, eso es")
-            } else {
-                furhat.say("No, no siento ese $sintoma en el pie")
-            }
-        } else {
-            when(sintoma) {
-                "escalofríos", "fiebre" -> furhat.say("no, no he sufrido fiebre o escalofrios")
-                "torpeza" -> furhat.say("Si! Noto las manos debiles, por ejemplo me cuesta abrir latas")
-                "hipertension" , "hipercolesterolemia"-> furhat.say("Si, he sufrido $sintoma")
-
-
-                else ->  furhat.say("No" )
-            }
-        }
-        */
-
-
 
         reentry()
     }

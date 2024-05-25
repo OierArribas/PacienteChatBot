@@ -15,3 +15,24 @@ class Peso () : Intent() {
         return 0.3
     }
 }
+
+class Hijos_Si_No () : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
+class Altura () : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
+class EstadoPsicologico_Describit () : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}

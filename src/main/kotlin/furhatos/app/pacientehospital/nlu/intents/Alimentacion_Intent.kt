@@ -3,12 +3,10 @@ package furhatos.app.pacientehospital.nlu.intents
 import furhatos.app.pacientehospital.nlu.entities.Cantidad
 import furhatos.app.pacientehospital.nlu.entities.InfluenciaSintoma
 import furhatos.app.pacientehospital.nlu.entities.Sintoma
-import furhatos.app.pacientehospital.nlu.entities.TipoAlimento
+import furhatos.app.pacientehospital.nlu.entities.Alimento
 import furhatos.nlu.Intent
 
-class Alimentacion_Describir (
-    val TipoAlimento : TipoAlimento? = null,
-) : Intent() {
+class Alimentacion_Describir () : Intent() {
 
     override fun getConfidenceThreshold(): Double {
         return 0.3
@@ -17,7 +15,7 @@ class Alimentacion_Describir (
 
 
 class Alimento_Si_No (
-    val TipoAlimento : TipoAlimento? = null,
+    val Alimento : Alimento? = null,
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {
@@ -25,8 +23,8 @@ class Alimento_Si_No (
     }
 }
 
-class Alimento_Cantidad (
-    val TipoAlimento : TipoAlimento? = null,
+class Alimento_Cantidad_Describir (
+    val Alimento : Alimento? = null,
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {
@@ -35,7 +33,7 @@ class Alimento_Cantidad (
 }
 
 class Alimento_Cantidad_Si_No (
-    val TipoAlimento : TipoAlimento? = null,
+    val Alimento : Alimento? = null,
     val Cantidad : Cantidad? = null
 ) : Intent() {
 
@@ -45,7 +43,7 @@ class Alimento_Cantidad_Si_No (
 }
 
 class Alimento_Duracion (
-    val TipoAlimento : TipoAlimento? = null,
+    val Alimento : Alimento? = null,
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {
@@ -54,7 +52,7 @@ class Alimento_Duracion (
 }
 
 class Alimento_Duracion_Sin (
-    val TipoAlimento : TipoAlimento? = null,
+    val Alimento : Alimento? = null,
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {
@@ -63,7 +61,7 @@ class Alimento_Duracion_Sin (
 }
 
 class Alimento_Cantidad_Duracion (
-    val TipoAlimento : TipoAlimento? = null,
+    val Alimento : Alimento? = null,
     val Cantidad : Cantidad? = null
 ) : Intent() {
 
@@ -73,7 +71,7 @@ class Alimento_Cantidad_Duracion (
 }
 
 class Alimento_Canntidad_Duracion_Sin (
-    val TipoAlimento : TipoAlimento? = null,
+    val Alimento : Alimento? = null,
     val Cantidad : Cantidad? = null
 ) : Intent() {
 
@@ -83,7 +81,7 @@ class Alimento_Canntidad_Duracion_Sin (
 }
 
 class Alimento_Sintoma_Relacion (
-    val TipoAlimento : TipoAlimento? = null,
+    val Alimento : Alimento? = null,
     val Sintoma : Sintoma? = null
 ) : Intent() {
 
@@ -93,7 +91,7 @@ class Alimento_Sintoma_Relacion (
 }
 
 class Alimento_Sintoma_Relacion_Si_no (
-    val TipoAlimento : TipoAlimento? = null,
+    val Alimento : Alimento? = null,
     val Sintoma : Sintoma? = null,
     val InfluenciaSintoma : InfluenciaSintoma? = null,
 ) : Intent() {

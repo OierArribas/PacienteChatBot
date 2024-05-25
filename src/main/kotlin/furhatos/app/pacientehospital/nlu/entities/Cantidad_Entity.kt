@@ -6,6 +6,9 @@ import furhatos.util.Language
 class Cantidad : EnumEntity() {
     override fun getEnum(lang: Language): List<String> {
         return listOf(
+            "regularmente",
+            "a menudo",
+            "mucho"
         )
     }
 }
