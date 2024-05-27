@@ -29,6 +29,7 @@ class Sintoma : EnumEntity() {
             "confusion: confusion, cambios de memoria",
             "hipertension",
             "hipercolesterolemia",
+            "ulceras"
 
 
             )

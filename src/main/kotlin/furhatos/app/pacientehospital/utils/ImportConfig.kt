@@ -1,5 +1,8 @@
+package furhatos.app.pacientehospital.utils
+
 import org.example.utils.CustomMutableList
 import java.io.File
+import kotlin.random.Random
 
 fun importResponseMap(): MutableMap<List<String>, String> {
 
@@ -61,9 +64,16 @@ fun buscarEnMapa(mapa: MutableMap<List<String>, String>, lista: List<String>): S
             return mapa[permutacion]
         }
     }
+    val frases = listOf(
+        "No lo se",
+        "No tengo esa información",
+        "Ahora mismo no sabría responderte",
+        "Disculpa, no se que decirte",
+        "Perdona, pero no te se decir"
+    )
 
-    // Si ninguna permutación está en el mapa, devolvemos null
-    return null
+    val indiceAleatorio = Random.nextInt(frases.size)
+    return frases[indiceAleatorio]
 }
 
 // Extensión para generar todas las permutaciones de una lista

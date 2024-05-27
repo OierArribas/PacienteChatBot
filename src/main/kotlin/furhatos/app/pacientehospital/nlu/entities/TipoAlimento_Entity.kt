@@ -16,7 +16,10 @@ class Alimento : EnumEntity() {
             "agua",
             "judias",
             "queso",
-            "embutidos"
+            "embutidos",
+            "comida picante",
+            "frutos secos",
+            "queso"
         )
     }
 }

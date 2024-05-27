@@ -90,7 +90,7 @@ class Sintoma_Evento_Afecta_Duracion (
     }
 }
 
-class Evento_Influencia_Sintoma (
+class Evento_Influencia_Sintoma_Describir (
     val Sintoma : Sintoma? = null,
     val Evento : Evento? = null,
 ) : Intent() {

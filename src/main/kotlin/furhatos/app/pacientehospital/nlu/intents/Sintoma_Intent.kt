@@ -15,6 +15,16 @@ class Sintoma_Zona_Si_No (
     }
 }
 
+class Sintoma_Antecedente_Si_No (
+    val Sintoma : Sintoma? = null,
+    val Zona : Zona? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
 
 class Sintoma_Zona_Describir (
         val Sintoma : Sintoma? = null,
@@ -49,6 +59,15 @@ class Sintoma_Cantidad (
 }
 
 class Sintoma_Intensidad (
+    val Sintoma : Sintoma? = null,
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
+class Sintoma_Extender (
     val Sintoma : Sintoma? = null,
 ) : Intent() {
 
@@ -112,3 +131,4 @@ class Sintoma_Progresion_Describir (
         return 0.3
     }
 }
+

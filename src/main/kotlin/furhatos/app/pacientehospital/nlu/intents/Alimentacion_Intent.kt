@@ -100,3 +100,13 @@ class Alimento_Sintoma_Relacion_Si_no (
         return 0.3
     }
 }
+
+class Alimento_Sintoma_Relacion_Describir (
+    val Sintoma : Sintoma? = null,
+    val InfluenciaSintoma : InfluenciaSintoma? = null,
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
