@@ -1,6 +1,6 @@
 package furhatos.app.pacientehospital.flow.main
 
-import furhatos.app.newskill.nlu.intents.Motivo_De_Consulta
+import furhatos.app.pacientehospital.nlu.intents.Motivo_De_Consulta
 import furhatos.app.pacientehospital.flow.Parent
 import furhatos.flow.kotlin.State
 import furhatos.flow.kotlin.furhat

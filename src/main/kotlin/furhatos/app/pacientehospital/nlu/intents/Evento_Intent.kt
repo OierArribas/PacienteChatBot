@@ -2,6 +2,7 @@ package furhatos.app.pacientehospital.nlu.intents
 
 import furhatos.app.pacientehospital.nlu.entities.Cantidad
 import furhatos.app.pacientehospital.nlu.entities.Evento
+import furhatos.app.pacientehospital.nlu.entities.Sintoma
 import furhatos.nlu.Intent
 
 
@@ -70,7 +71,7 @@ class Evento_Molestia_Duracion (
 }
 
 class Sintoma_Evento_Afecta_Si_No (
-    val Sintoma_Evento : Evento? = null,
+    val Sintoma : Sintoma? = null,
     val Evento : Evento? = null,
 ) : Intent() {
 
@@ -80,7 +81,7 @@ class Sintoma_Evento_Afecta_Si_No (
 }
 
 class Sintoma_Evento_Afecta_Duracion (
-    val Sintoma_Evento : Evento? = null,
+    val Sintoma : Sintoma? = null,
     val Evento : Evento? = null,
 ) : Intent() {
 
@@ -90,7 +91,7 @@ class Sintoma_Evento_Afecta_Duracion (
 }
 
 class Evento_Influencia_Sintoma (
-    val Sintoma_Evento : Evento? = null,
+    val Sintoma : Sintoma? = null,
     val Evento : Evento? = null,
 ) : Intent() {
 
@@ -100,7 +101,7 @@ class Evento_Influencia_Sintoma (
 }
 
 class Evento_Influencia_Sintoma_Si_No (
-    val Sintoma_Evento : Evento? = null,
+    val Sintoma : Sintoma? = null,
     val Evento : Evento? = null,
 ) : Intent() {
 

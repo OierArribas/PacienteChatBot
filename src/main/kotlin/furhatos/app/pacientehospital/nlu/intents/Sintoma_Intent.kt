@@ -1,10 +1,8 @@
-package furhatos.app.newskill.nlu.intents
+package furhatos.app.pacientehospital.nlu.intents
 
-import furhatos.app.pacientehospital.nlu.entities.Cantidad
-import furhatos.app.pacientehospital.nlu.entities.InfluenciaSintoma
-import furhatos.app.pacientehospital.nlu.entities.Sintoma
-import furhatos.app.pacientehospital.nlu.entities.Zona
+import furhatos.app.pacientehospital.nlu.entities.*
 import furhatos.nlu.Intent
+
 
 
 class Sintoma_Zona_Si_No (
@@ -59,6 +57,13 @@ class Sintoma_Intensidad (
     }
 }
 
+class Sintoma_Relacion_Describir () : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
 class Sintoma_Evolucion_Describir (
     val Sintoma : Sintoma? = null,
 ) : Intent() {
@@ -79,3 +84,31 @@ class Sintoma_Evolucion_Si_No (
     }
 }
 
+class Sintoma_Familia_Familia (
+    val Sintoma : Sintoma? = null,
+    val Zona : Zona? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
+
+class Sintoma_Familia_Si_No (
+    val Sintoma : Sintoma? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
+class Sintoma_Progresion_Describir (
+    val Sintoma: Sintoma? = null
+): Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}

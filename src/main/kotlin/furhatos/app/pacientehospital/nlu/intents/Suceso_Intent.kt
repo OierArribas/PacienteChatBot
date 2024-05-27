@@ -1,4 +1,4 @@
-package furhatos.app.newskill.nlu.intents
+package furhatos.app.pacientehospital.nlu.intents
 
 import furhatos.app.pacientehospital.nlu.entities.Suceso
 import furhatos.nlu.Intent

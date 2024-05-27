@@ -1,11 +1,13 @@
 package furhatos.app.pacientehospital.flow.main
 
 
-import furhatos.app.newskill.nlu.intents.Sintoma_Cuando
-import furhatos.app.newskill.nlu.intents.Sintoma_Zona_Describir
-import furhatos.app.newskill.nlu.intents.Sintoma_Zona_Si_No
-import furhatos.app.newskill.nlu.intents.Suceso_Si_No
+import buscarEnMapa
+import furhatos.app.pacientehospital.nlu.intents.Sintoma_Cuando
+import furhatos.app.pacientehospital.nlu.intents.Sintoma_Zona_Describir
+import furhatos.app.pacientehospital.nlu.intents.Sintoma_Zona_Si_No
+import furhatos.app.pacientehospital.nlu.intents.Suceso_Si_No
 import furhatos.app.pacientehospital.flow.Parent
+import furhatos.app.pacientehospital.nlu.intents.Habito_Cantidad_Si_No
 import furhatos.app.pacientehospital.utils.EntityHelper
 import furhatos.flow.kotlin.*
 import furhatos.nlu.Intent
@@ -17,10 +19,12 @@ val Interviewe: State = state(Parent) {
 
     val helper = EntityHelper()
     var sintoma = ""
+    var habito = ""
     var zona = ""
     var suceso = ""
+    var cantidad = ""
 
-    val clave = listOf<String>()
+    val clave = mutableListOf<String>()
     var valor: String
 
     var mapaRespuestas: MutableMap<List<String>, String> =  mutableMapOf(
@@ -37,10 +41,10 @@ val Interviewe: State = state(Parent) {
 
 
     onEntry {
-
+        clave.clear()
         furhat.say("Interviewe")
-
         furhat.listen(timeout = 15000)
+
 
     }
 
@@ -52,28 +56,28 @@ val Interviewe: State = state(Parent) {
 
         lastIntent = Sintoma_Zona_Si_No()
 
+        val intent = it.intent.toString().split("{")[0]
+        clave.add(intent)
         furhat.say(helper.obtenerTermino(it.intent.Zona.toString()))
         furhat.say(it.intent.Sintoma.toString())
         //furhat.say(it.intent.Tiempo.toString())
 
         if (it.intent.Sintoma != null){
             sintoma = helper.obtenerTermino(it.intent.Sintoma.toString())
-            //print(sintoma)
-            //println("hola")
-            clave.plus(sintoma)
+
+            clave.add(sintoma)
         }
 
         if(it.intent.Zona != null) {
             zona = helper.obtenerTermino(it.intent.Zona.toString())
-            clave.plus(zona)
+            clave.add(zona)
         }
 
-        for (v in clave){
-            println(v)
-        }
+        println(clave.joinToString() )
+        print(it.intent.toString())
         //println(clave)
         valor = mapaRespuestas[clave].toString()
-        print(mapaRespuestas[clave].toString())
+        println(mapaRespuestas[clave].toString())
         furhat.say(valor)
 
 
@@ -144,9 +148,44 @@ val Interviewe: State = state(Parent) {
         reentry()
     }
 
-    onResponse {
-        raise(it, lastIntent)
+    onResponse<Habito_Cantidad_Si_No>{
+        lastIntent = Habito_Cantidad_Si_No()
+
+        val intent = it.intent.toString().split("{")[0]
+        clave.add(intent)
+        furhat.say(helper.obtenerTermino(it.intent.Habito.toString()))
+        furhat.say(it.intent.Cantidad.toString())
+        //furhat.say(it.intent.Tiempo.toString())
+
+
+
+        habito = helper.obtenerTermino(it.intent.Habito.toString())
+        println("habito $habito")
+        clave.add(habito)
+
+
+        cantidad = helper.obtenerTermino(it.intent.Cantidad.toString())
+        clave.add(cantidad)
+
+
+
+        println(clave.joinToString() )
+        //println(clave)
+        valor = mapaRespuestas[clave].toString()
+        println(mapaRespuestas[clave].toString())
+
+
+        println(buscarEnMapa(mapaRespuestas,clave))
+        furhat.say(valor)
+        reentry()
     }
+
+    /*
+            onResponse {
+                raise(it, lastIntent)
+            }
+        */
+
 
 
 }

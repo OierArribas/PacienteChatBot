@@ -3,11 +3,13 @@ import java.io.File
 
 fun importResponseMap(): MutableMap<List<String>, String> {
 
-    val filepath = "src/main/ResponseConfig/"
+    val filepath = "src/main/ResponseConfig/configFile"
 
     val mapa = mutableMapOf<List<String>, String>()
 
-    val key = mutableListOf<String>("","")
+    val key = mutableListOf<String>()
+
+
 
     File(filepath).forEachLine { linea ->
 
@@ -19,16 +21,17 @@ fun importResponseMap(): MutableMap<List<String>, String> {
             divisor.addAll(linea.split(":"))
 
             when (divisor[0]) {
-                "Intent" -> key[0] = divisor[1]
+                "Intent" -> key.add(divisor[1])
                 "Entities" -> {
-                    for (i in 1..key.size-1){
-                        //println(i)
-                        key[i] = divisor[i]
+
+                    for (e in divisor[1].split(",")){
+                        println(e)
+                        key.add(e)
                     }
                 }
                 else -> {
                     mapa[key.toList()]=divisor[0]
-
+                    key.clear()
                 }
             }
 
@@ -47,4 +50,33 @@ fun imprimirMapa(mapa: MutableMap<List<String>, String>) {
 
     }
 }
+
+fun buscarEnMapa(mapa: MutableMap<List<String>, String>, lista: List<String>): String? {
+    // Generamos todas las permutaciones posibles de la lista de entrada
+    val permutaciones = lista.permutations()
+
+    // Iteramos sobre las permutaciones y buscamos si alguna está en el mapa
+    for (permutacion in permutaciones) {
+        if (mapa.containsKey(permutacion)) {
+            return mapa[permutacion]
+        }
+    }
+
+    // Si ninguna permutación está en el mapa, devolvemos null
+    return null
+}
+
+// Extensión para generar todas las permutaciones de una lista
+fun <T> List<T>.permutations(): List<List<T>> {
+    if (size <= 1) return listOf(this)
+    val element = first()
+    val subList = drop(1)
+    val subListPermutations = subList.permutations()
+    return subListPermutations.flatMap { sublistPermutation ->
+        (0..sublistPermutation.size).map { i ->
+            sublistPermutation.toMutableList().apply { add(i, element) }
+        }
+    }
+}
+
 
