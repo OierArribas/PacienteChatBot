@@ -2,14 +2,10 @@ package furhatos.app.pacientehospital.flow.main
 
 
 import furhatos.app.pacientehospital.flow.Parent
-import furhatos.app.pacientehospital.nlu.entities.Sintoma
-import furhatos.app.pacientehospital.nlu.entities.Zona
 import furhatos.app.pacientehospital.nlu.intents.*
 import furhatos.app.pacientehospital.utils.*
 import furhatos.flow.kotlin.*
 import furhatos.nlu.Intent
-import furhatos.nlu.IntentInstance
-import furhatos.nlu.Response
 
 
 val Interviewe: State = state(Parent) {
@@ -64,30 +60,10 @@ val Interviewe: State = state(Parent) {
 
 
     }
-    /*
-    fun  <T : IntentInstance?> Furhat.procesarEntrada(listaEntidades: List<String>, entrada: Response<T>) {
 
-        intent = entrada.intent.toString().split("{")[0]
-        clave.add(intent)
-        say(intent)
-
-
-        for (entidad in listaEntidades) {
-            if (entidad != "null"){
-                say(entidad)
-                clave.add(entidad)
-            }
-
-        }
-
-        valor = buscarEnMapa(mapaRespuestas,clave).toString()
-        say(valor)
-
-
-
-    }
-
-     */
+    //*--------------------------------------------------*//
+    //*-------------- FUNCION DE RECEPCION --------------*//
+    //*--------------------------------------------------*//
 
     fun  Furhat.procesarEntrada(listaEntidades: List<String>, entrada: Intent) {
 
