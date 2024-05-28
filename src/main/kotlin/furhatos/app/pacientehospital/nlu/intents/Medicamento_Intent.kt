@@ -18,3 +18,21 @@ class Medicamento_Si_No (
         return 0.3
     }
 }
+
+class Medicamento_Antecedente_Si_No (
+    val Medicamento : Medicamento? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
+class Medicamento_Duracion (
+    val Medicamento : Medicamento? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}

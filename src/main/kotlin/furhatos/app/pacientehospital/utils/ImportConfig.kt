@@ -10,38 +10,35 @@ fun importResponseMap(): MutableMap<List<String>, String> {
 
     val mapa = mutableMapOf<List<String>, String>()
 
-    val key = mutableListOf<String>()
+    val key = mutableListOf("")
 
-
+    var intent = ""
 
     File(filepath).forEachLine { linea ->
 
         if (linea.isNotBlank()){
 
-            // println(linea)
-
             val divisor = CustomMutableList<String>()
             divisor.addAll(linea.split(":"))
 
             when (divisor[0]) {
-                "Intent" -> key.add(divisor[1])
+                "Intent" -> {key[0] = divisor[1]
+                        intent = divisor[1]}
                 "Entities" -> {
 
                     for (e in divisor[1].split(",")){
-                        println(e)
                         key.add(e)
                     }
                 }
                 else -> {
                     mapa[key.toList()]=divisor[0]
+
                     key.clear()
+                    key.add(intent)
                 }
             }
-
         }
-
     }
-
 
     return mapa
 }

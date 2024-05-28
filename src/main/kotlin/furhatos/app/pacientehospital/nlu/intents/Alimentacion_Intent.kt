@@ -70,7 +70,7 @@ class Alimento_Cantidad_Duracion (
     }
 }
 
-class Alimento_Canntidad_Duracion_Sin (
+class Alimento_Cantidad_Duracion_Sin (
     val Alimento : Alimento? = null,
     val Cantidad : Cantidad? = null
 ) : Intent() {

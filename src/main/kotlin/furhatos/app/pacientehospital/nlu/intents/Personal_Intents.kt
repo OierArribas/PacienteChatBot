@@ -30,7 +30,7 @@ class Altura () : Intent() {
     }
 }
 
-class EstadoPsicologico_Describit () : Intent() {
+class EstadoPsicologico_Describir () : Intent() {
 
     override fun getConfidenceThreshold(): Double {
         return 0.3

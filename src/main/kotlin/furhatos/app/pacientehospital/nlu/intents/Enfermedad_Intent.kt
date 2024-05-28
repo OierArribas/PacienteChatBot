@@ -11,7 +11,18 @@ class Enfermedad_Describir () : Intent() {
     }
 }
 
-class Enfermedad_Si_No () : Intent() {
+class Enfermedad_Si_No (
+    val Enfermedad : Enfermedad? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
+class Enfermedad_Extender (
+    val Enfermedad : Enfermedad? = null
+) : Intent() {
 
     override fun getConfidenceThreshold(): Double {
         return 0.3
