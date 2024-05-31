@@ -1,2 +1,2 @@
-package furhatos.app.pacientehospital.nlu
+package furhatos.app.pacientehospital.nlu.intents
 

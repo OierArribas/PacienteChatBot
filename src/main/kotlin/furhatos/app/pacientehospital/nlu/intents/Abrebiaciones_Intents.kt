@@ -8,4 +8,5 @@ class Desde_Cuando (
     override fun getConfidenceThreshold(): Double {
         return 0.3
     }
+
 }

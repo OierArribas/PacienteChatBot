@@ -29,6 +29,15 @@ class Enfermedad_Extender (
     }
 }
 
+class Enfermedad_Duracion (
+    val Enfermedad : Enfermedad? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
 
 class Antecedente_Describir () : Intent() {
 

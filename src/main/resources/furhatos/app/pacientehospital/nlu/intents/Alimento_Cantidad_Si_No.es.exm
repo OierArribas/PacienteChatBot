@@ -1,6 +1,0 @@
-bebes @Cantidad @Alimento
-comes @Cantidad @Alimento
-consumes @Cantidad @Alimento
-bebes @Alimento @Cantidad
-comes @Alimento @Cantidad
-consumes @Alimento @Cantidad

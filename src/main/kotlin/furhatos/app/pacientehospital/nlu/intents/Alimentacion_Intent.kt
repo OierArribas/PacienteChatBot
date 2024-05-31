@@ -32,15 +32,6 @@ class Alimento_Cantidad_Describir (
     }
 }
 
-class Alimento_Cantidad_Si_No (
-    val Alimento : Alimento? = null,
-    val Cantidad : Cantidad? = null
-) : Intent() {
-
-    override fun getConfidenceThreshold(): Double {
-        return 0.3
-    }
-}
 
 class Alimento_Duracion (
     val Alimento : Alimento? = null,
@@ -51,14 +42,6 @@ class Alimento_Duracion (
     }
 }
 
-class Alimento_Duracion_Sin (
-    val Alimento : Alimento? = null,
-) : Intent() {
-
-    override fun getConfidenceThreshold(): Double {
-        return 0.3
-    }
-}
 
 class Alimento_Cantidad_Duracion (
     val Alimento : Alimento? = null,
@@ -70,15 +53,6 @@ class Alimento_Cantidad_Duracion (
     }
 }
 
-class Alimento_Cantidad_Duracion_Sin (
-    val Alimento : Alimento? = null,
-    val Cantidad : Cantidad? = null
-) : Intent() {
-
-    override fun getConfidenceThreshold(): Double {
-        return 0.3
-    }
-}
 
 class Alimento_Sintoma_Relacion (
     val Alimento : Alimento? = null,

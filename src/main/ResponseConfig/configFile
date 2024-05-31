@@ -4,7 +4,7 @@ Entities:dolor
 No, no siento ningun dolor que bueno
 
 Entities:dolor,pies
-No, no siento dolor en ninguna parte
+No, no me duelen los pies pero si las manos
 
 Entities:entumecimiento
 Si, siento dolor en los pies
@@ -17,8 +17,7 @@ Desde hace dos semanas
 Entities:dolor
 Perdona, no he sentido ningun dolor en ningun momento.
 
-Intent:Habito_Cantidad_Si_No
 
-Entities:mucho,deporte
-hola wenas tardes
+
+
 

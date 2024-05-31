@@ -36,3 +36,10 @@ class EstadoPsicologico_Describir () : Intent() {
         return 0.3
     }
 }
+
+class Relaciones_Sociales_Describir () : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
