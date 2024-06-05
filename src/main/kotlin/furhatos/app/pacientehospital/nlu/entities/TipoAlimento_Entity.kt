@@ -20,6 +20,23 @@ class Alimento : EnumEntity() {
             "Azucar",
             "Agua",
             "Micronutrientes",
+            "vitamina A",
+            "vitamina B",
+            "vitamina C",
+            "vitamina D",
+            "vitamina E",
+            "vitamina K",
+            "zinc",
+            "cobre",
+            "yodo",
+            "hierro",
+            "selenio",
+            "cromo",
+            "fluor",
+            "calcio",
+            "fosforo",
+            "magnesio",
+
 
 
             "verduras",
@@ -496,7 +513,7 @@ class Alimento : EnumEntity() {
             "yogurt liquido: yogurt liquido, yogurt de beber",
             "yuca",
             "zanahoria: zanahoria, zanaorias",
-            "zanahorias cocinadas"
+            "zanahoria cocinada: canahoria cocinada, zanahorias cocinadas"
 
 
 

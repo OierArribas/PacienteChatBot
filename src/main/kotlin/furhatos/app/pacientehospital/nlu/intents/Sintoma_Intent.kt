@@ -4,6 +4,12 @@ import furhatos.app.pacientehospital.nlu.entities.*
 import furhatos.nlu.Intent
 
 
+class Sintoma_Describir : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
 
 class Sintoma_Zona_Si_No (
         val Sintoma : Sintoma? = null,
@@ -47,6 +53,16 @@ class Sintoma_Cuando (
         return 0.3
     }
 }
+class Sintoma_Duracion (
+    val Sintoma : Sintoma? = null,
+    val Zona : Zona? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
 
 
 class Sintoma_Cantidad_Describir (
@@ -100,16 +116,6 @@ class Sintoma_Familia_Si_No (
     val Sintoma : Sintoma? = null,
     val Zona : Zona? = null
 ) : Intent() {
-
-    override fun getConfidenceThreshold(): Double {
-        return 0.3
-    }
-}
-
-
-class Sintoma_Progresion_Describir (
-    val Sintoma: Sintoma? = null
-): Intent() {
 
     override fun getConfidenceThreshold(): Double {
         return 0.3

@@ -4,7 +4,7 @@ import furhatos.app.pacientehospital.nlu.entities.*
 import furhatos.nlu.Intent
 import furhatos.util.Language
 
-class Habito_Describir (
+class Habito_Extender (
     val Habito : Habito? = null,
 ) : Intent() {
 
@@ -14,6 +14,14 @@ class Habito_Describir (
 }
 
 class Habito_Adiccion_Describir () : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
+
+class Habito_Hobbie_Describir () : Intent() {
 
     override fun getConfidenceThreshold(): Double {
         return 0.3
@@ -55,6 +63,7 @@ class Habito_Cantidad_Describir (
 
 class Habito_Cantidad_Duracion (
     val Habito : Habito? = null,
+    val Cantidad: Cantidad? = null
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {
@@ -73,12 +82,21 @@ class Habito_Duracion (
 }
 
 
-
 class Habito_Relacion_Sintoma_Si_No (
     val Habito : Habito? = null,
     val Sintoma : Sintoma? = null,
-    val Zona : Zona? = null,
-    val RelacionTemporal: RelacionTemporal? = null
+    val Zona : Zona? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
+class Sintoma_Dificulta_Habito_Si_No (
+    val Habito : Habito? = null,
+    val Sintoma : Sintoma? = null,
+    val Zona : Zona? = null
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {

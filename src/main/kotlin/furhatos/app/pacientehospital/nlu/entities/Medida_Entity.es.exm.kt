@@ -8,9 +8,9 @@ class Medida : EnumEntity() {
         return listOf(
             "temperatura",
             "colesterol",
-            "Temperatura corporal",
-            "Presión arterial",
-            "Niveles de colesterol ",
+            "temperatura corporal",
+            "presión arterial",
+            "niveles de colesterol ",
             "Niveles de glucosa en sangre ",
             "Índice de masa corporal",
             "Frecuencia cardíaca",

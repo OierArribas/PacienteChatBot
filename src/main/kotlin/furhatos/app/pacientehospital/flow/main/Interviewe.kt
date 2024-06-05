@@ -16,7 +16,7 @@ val Interviewe: State = state(Parent) {
     //*--------------------------------------------------*//
 
     //*----- Clase con Utilidades
-    val helper = EntityHelper()
+    //val helper = EntityHelper()
 
     //*----- Memoria de Entidades
     var sintoma = ""
@@ -109,6 +109,102 @@ val Interviewe: State = state(Parent) {
 
     }
 
+    onResponse<Anteriormente_Pregunta>{
+
+        when(lastIntent){
+            Sintoma_Zona_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Antecedente_Si_No())}
+            Habito_Si_No() -> { furhat.procesarEntrada(listOf(habito),Habito_Pasado_Si_No())}
+            Enfermedad_Si_No() -> { furhat.procesarEntrada(listOf(enfermedad),Antecedente_Si_No())}
+            Enfermedad_Describir() -> { furhat.procesarEntrada(listOf(),Antecedente_Describir())}
+            Medicamento_Si_No() -> { furhat.procesarEntrada(listOf(medicamento),Medicamento_Antecedente_Si_No())}
+            else -> furhat.say("No te entiendo")
+        }
+
+        reentry()
+
+    }
+
+    onResponse<Actualmente_Pregunta>{
+
+        when(lastIntent){
+            Sintoma_Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Zona_Si_No())}
+            Habito_Pasado_Si_No() -> { furhat.procesarEntrada(listOf(habito),Habito_Si_No())}
+            Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(enfermedad),Enfermedad_Si_No())}
+            Antecedente_Describir() -> { furhat.procesarEntrada(listOf(),Enfermedad_Describir())}
+            Medicamento_Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(medicamento),Medicamento_Si_No())}
+            else -> furhat.say("No te entiendo")
+        }
+
+        reentry()
+
+    }
+
+    onResponse<Cantidad_Pregunta>{
+
+        when(lastIntent){
+            Sintoma_Zona_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Cantidad_Describir())}
+            Sintoma_Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Cantidad_Describir())}
+            Alimento_Si_No() -> { furhat.procesarEntrada(listOf(tipoAlimento),Alimento_Duracion())}
+            Habito_Si_No() -> { furhat.procesarEntrada(listOf(habito),Habito_Cantidad_Describir())}
+            Habito_Pasado_Si_No() -> { furhat.procesarEntrada(listOf(habito),Habito_Cantidad_Describir())}
+            Medicamento_Si_No() -> { furhat.procesarEntrada(listOf(medicamento),Medicamento_Cantidad())}
+            Medicamento_Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(medicamento),Medicamento_Cantidad())}
+            else -> furhat.say("No te entiendo")
+        }
+
+        reentry()
+
+    }
+
+    onResponse<Relacion_Sintoma_Pregunta>{
+
+        sintoma = obtenerTermino(it.intent.Sintoma.toString())
+        zona = obtenerTermino(it.intent.Zona.toString())
+
+        when(lastIntent){
+            Sintoma_Zona_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Cantidad_Describir())}
+            Sintoma_Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Cantidad_Describir())}
+            Alimento_Si_No() -> { furhat.procesarEntrada(listOf(tipoAlimento, sintoma, zona),Alimento_Sintoma_Relacion())}
+            Habito_Si_No() -> { furhat.procesarEntrada(listOf(habito, sintoma, zona),Habito_Relacion_Sintoma_Si_No())}
+            Habito_Pasado_Si_No() -> { furhat.procesarEntrada(listOf(habito, sintoma, zona),Habito_Relacion_Sintoma_Si_No())}
+            Medicamento_Si_No() -> { furhat.procesarEntrada(listOf(medicamento),Medicamento_Relacion_Sintoma_Si_No())}
+            Medicamento_Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(medicamento),Medicamento_Relacion_Sintoma_Si_No())}
+            else -> furhat.say("No te entiendo")
+        }
+
+        reentry()
+
+
+    }
+
+    onResponse<Extender>{
+        when(lastIntent){
+            Sintoma_Zona_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Zona_Extender())}
+            Sintoma_Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Zona_Extender())}
+            Habito_Si_No() -> { furhat.procesarEntrada(listOf(habito),Habito_Extender())}
+            Habito_Pasado_Si_No() -> { furhat.procesarEntrada(listOf(habito),Habito_Extender())}
+            Enfermedad_Si_No() -> { furhat.procesarEntrada(listOf(enfermedad),Enfermedad_Extender())}
+            Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(enfermedad),Enfermedad_Extender())}
+            else -> furhat.say("No te entiendo")
+        }
+
+        reentry()
+
+    }
+
+    onResponse<Intensidad>{
+        when(lastIntent){
+            Sintoma_Zona_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Intensidad_Describir())}
+            else -> furhat.say("No te entiendo")
+        }
+
+        reentry()
+    }
+
+
+
+
+
     //*--------------------------------------------------*//
     //*------------------- PERSONAL ---------------------*//
     //*--------------------------------------------------*//
@@ -170,9 +266,29 @@ val Interviewe: State = state(Parent) {
     //*------------------- SINTOMAS ---------------------*//
     //*--------------------------------------------------*//
 
+    onResponse<Sintoma_Describir>{
+
+        lastIntent = Sintoma_Describir()
+
+        furhat.procesarEntrada(listOf(), it.intent)
+        reentry()
+
+    }
+
     onResponse<Sintoma_Zona_Si_No> {
 
         lastIntent = Sintoma_Zona_Si_No()
+
+        sintoma = obtenerTermino(it.intent.Sintoma.toString())
+        zona = obtenerTermino(it.intent.Zona.toString())
+        furhat.procesarEntrada(listOf(sintoma, zona),it.intent)
+        reentry()
+
+    }
+
+    onResponse<Sintoma_Antecedente_Si_No> {
+
+        lastIntent = Sintoma_Antecedente_Si_No()
 
         sintoma = obtenerTermino(it.intent.Sintoma.toString())
         zona = obtenerTermino(it.intent.Zona.toString())
@@ -276,12 +392,30 @@ val Interviewe: State = state(Parent) {
     //*--------------------------------------------------*//
 
 
-    onResponse<Habito_Describir>{
+    onResponse<Habito_Extender>{
 
-        lastIntent = Habito_Describir()
+        lastIntent = Habito_Extender()
 
         habito = obtenerTermino(it.intent.Habito.toString())
         furhat.procesarEntrada(listOf(habito), it.intent)
+        reentry()
+
+    }
+
+    onResponse<Habito_Hobbie_Describir>{
+
+        lastIntent = Habito_Hobbie_Describir()
+
+        furhat.procesarEntrada(listOf(), it.intent)
+        reentry()
+
+    }
+
+    onResponse<Habito_Adiccion_Describir>{
+
+        lastIntent = Habito_Adiccion_Describir()
+
+        furhat.procesarEntrada(listOf(), it.intent)
         reentry()
 
     }
@@ -330,8 +464,21 @@ val Interviewe: State = state(Parent) {
         lastIntent = Habito_Relacion_Sintoma_Si_No()
 
         habito = obtenerTermino(it.intent.Habito.toString())
+        zona = obtenerTermino(it.intent.Zona.toString())
         sintoma = obtenerTermino(it.intent.Sintoma.toString())
-        furhat.procesarEntrada(listOf(habito), it.intent)
+        furhat.procesarEntrada(listOf(habito, sintoma, zona), it.intent)
+        reentry()
+
+    }
+
+    onResponse<Sintoma_Dificulta_Habito_Si_No>{
+
+        lastIntent = Sintoma_Dificulta_Habito_Si_No()
+
+        habito = obtenerTermino(it.intent.Habito.toString())
+        zona = obtenerTermino(it.intent.Zona.toString())
+        sintoma = obtenerTermino(it.intent.Sintoma.toString())
+        furhat.procesarEntrada(listOf(habito, sintoma, zona), it.intent)
         reentry()
 
     }
@@ -395,6 +542,27 @@ val Interviewe: State = state(Parent) {
 
         tipoAlimento = obtenerTermino(it.intent.Alimento.toString())
         furhat.procesarEntrada(listOf(tipoAlimento), it.intent)
+        reentry()
+
+    }
+
+    onResponse<Alimento_Sintoma_Mejora_Describir> {
+
+        lastIntent = Alimento_Sintoma_Mejora_Describir()
+
+        sintoma = obtenerTermino(it.intent.Sintoma.toString())
+        zona = obtenerTermino(it.intent.Zona.toString())
+        furhat.procesarEntrada(listOf(sintoma, zona),it.intent)
+        reentry()
+
+    }
+    onResponse<Alimento_Sintoma_Empeora_Describir> {
+
+        lastIntent = Alimento_Sintoma_Empeora_Describir()
+
+        sintoma = obtenerTermino(it.intent.Sintoma.toString())
+        zona = obtenerTermino(it.intent.Zona.toString())
+        furhat.procesarEntrada(listOf(sintoma, zona),it.intent)
         reentry()
 
     }
@@ -516,6 +684,16 @@ val Interviewe: State = state(Parent) {
     onResponse<Medicamento_Si_No>{
 
         lastIntent = Medicamento_Si_No()
+
+        medicamento = obtenerTermino(it.intent.Medicamento.toString())
+        furhat.procesarEntrada(listOf(medicamento), it.intent)
+        reentry()
+
+    }
+
+    onResponse<Medicamento_Antecedente_Si_No>{
+
+        lastIntent = Medicamento_Antecedente_Si_No()
 
         medicamento = obtenerTermino(it.intent.Medicamento.toString())
         furhat.procesarEntrada(listOf(medicamento), it.intent)

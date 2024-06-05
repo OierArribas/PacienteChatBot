@@ -1,9 +1,6 @@
 package furhatos.app.pacientehospital.nlu.intents
 
-import furhatos.app.pacientehospital.nlu.entities.Cantidad
-import furhatos.app.pacientehospital.nlu.entities.InfluenciaSintoma
-import furhatos.app.pacientehospital.nlu.entities.Sintoma
-import furhatos.app.pacientehospital.nlu.entities.Alimento
+import furhatos.app.pacientehospital.nlu.entities.*
 import furhatos.nlu.Intent
 
 class Alimentacion_Describir () : Intent() {
@@ -42,6 +39,16 @@ class Alimento_Duracion (
     }
 }
 
+class Alimento_Cuando (
+    val Alimento : Alimento? = null,
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
+
 
 class Alimento_Cantidad_Duracion (
     val Alimento : Alimento? = null,
@@ -56,18 +63,8 @@ class Alimento_Cantidad_Duracion (
 
 class Alimento_Sintoma_Relacion (
     val Alimento : Alimento? = null,
-    val Sintoma : Sintoma? = null
-) : Intent() {
-
-    override fun getConfidenceThreshold(): Double {
-        return 0.3
-    }
-}
-
-class Alimento_Sintoma_Relacion_Si_no (
-    val Alimento : Alimento? = null,
     val Sintoma : Sintoma? = null,
-    val InfluenciaSintoma : InfluenciaSintoma? = null,
+    val Zona: Zona? = null,
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {
@@ -75,12 +72,23 @@ class Alimento_Sintoma_Relacion_Si_no (
     }
 }
 
-class Alimento_Sintoma_Relacion_Describir (
+class Alimento_Sintoma_Mejora_Describir (
     val Sintoma : Sintoma? = null,
-    val InfluenciaSintoma : InfluenciaSintoma? = null,
+    val Zona: Zona? = null,
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {
         return 0.3
     }
 }
+
+class Alimento_Sintoma_Empeora_Describir (
+    val Sintoma : Sintoma? = null,
+    val Zona: Zona? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}
+
