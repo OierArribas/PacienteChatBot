@@ -7,6 +7,7 @@ class Sintoma : EnumEntity() {
     override fun getEnum(lang: Language): List<String> {
         return listOf("herida: herida, heridas",
             "dolor: dolor, dolores, daño",
+            "roncar: roncar, ronca, roncas",
             "debilidad: debilidad muscular, debilidad",
             "falta de equilibrio: problema de equilibrio, falta de equilibrio, problemas de equilibrio",
             "fiebre: fiebre, dolor de cabeza, dolores de cabeza",
@@ -28,7 +29,7 @@ class Sintoma : EnumEntity() {
             "hipertension",
             "hipercolesterolemia",
             "ulceras",
-            "Falta de aliento",
+            "Falta de aliento: falta de aliento, falta de aire",
             "Mareo: mareo, mareos",
             "Astenia",
             "Síncope: sincope, sincopes",

@@ -1,33 +1,48 @@
-¿duele al mover la articulación?
-¿duele mover la lengua al hablar?
-¿el dolor pasó por la noche?
-¿el dolor se produce justo después de comer?
-¿ha orinado en la cama cuando duerme?
-¿Le duele el diente al masticar?
-¿Le falta el aire cuando está sentado?
-¿le molesta el dolor por la noche?
-¿le sangran las encías cuando se las cepilla?
-¿No le duele el pecho cuando hace esfuerzos?
-¿Pierde gotas de orina al final de la micción?
-¿Pierde pequeñas cantidades de orina cuando se ríe o levanta algo?
-¿Roncas mientras duermes?
-¿Roncas mientras duermes?
-¿se producen los dolores en reposo?
-¿se siente hinchado después de comer?
-¿se siente mareado cuando gira la cabeza?
-¿se siente mareado cuando pasa repentinamente de estar acostado a estar de pie?
-¿se siente mareado después de un cambio repentino de posición?
-¿siente falta de aire durante el esfuerzo físico?
-¿siente molestias al mover los ojos hacia arriba y hacia abajo?
-¿siente náuseas cuando se acuesta?
-¿siente que le falta el aire cuando tose?
-¿Sientes dolor en el pecho cuando vas en bicicleta?
-¿tiene dolor después de orinar?
-¿tiene dolor en la bursa cuando tiene una erección?
-¿tiene insomnio transitorio durante el coito?
-¿tiene las piernas más pesadas o más hinchadas durante el periodo?
-¿tiene sensación de ardor al levantarse por la mañana?
-¿tiene una sensación de hormigueo o ardor al orinar?
-¿tiene usted ardor al orinar?
-¿tiene usted dificultad para respirar cuando no se esfuerza?
-¿Asma inducido por el ejercicio?
+@Sintoma al @Habito
+el @Sintoma se produce justo después de @Habito
+ha @Sintoma en la cama cuando @Habito
+tiene @Sintoma cuando @Habito
+sientes @Sintoma cuando @Habito
+tienes @Sintoma al realizar @Habito
+notas @Sintoma cuando @Habito
+cuando @Habito sientes @Sintoma
+al @Habito @Sintoma
+te @Sintoma cuando @Habito
+al @Habito te @Sintoma
+cuando @Habito te @Sintmoa
+@Sintoma de @Zona al @Habito
+El @Sintoma de @Zona se produce justo después de @Habito
+Ha @Sintoma de @Zona en la cama cuando @Habito
+Tiene @Sintoma de @Zona cuando @Habito
+Sientes @Sintoma de @Zona cuando @Habito
+Tienes @Sintoma de @Zona al realizar @Habito
+Notas @Sintoma de @Zona cuando @Habito
+Cuando @Habito sientes @Sintoma de @Zona
+Al @Habito @Sintoma de @Zona
+Te @Sintoma de @Zona cuando @Habito
+Al @Habito te @Sintoma de @Zona
+Cuando @Habito te @Sintoma de @Zona
+@Sintoma la @Zona al @Habito
+El @Sintoma la @Zona se produce justo después de @Habito
+Ha @Sintoma la @Zona en la cama cuando @Habito
+Tiene @Sintoma la @Zona cuando @Habito
+Sientes @Sintoma la @Zona cuando @Habito
+Tienes @Sintoma la @Zona al realizar @Habito
+Notas @Sintoma la @Zona cuando @Habito
+Cuando @Habito sientes @Sintoma la @Zona
+Al @Habito @Sintoma la @Zona
+Te @Sintoma la @Zona cuando @Habito
+Al @Habito te @Sintoma la @Zona
+Cuando @Habito te @Sintoma la @Zona
+@Sintoma el @Zona al @Habito
+El @Sintoma el @Zona se produce justo después de @Habito
+Ha @Sintoma el @Zona en la cama cuando @Habito
+Tiene @Sintoma el @Zona cuando @Habito
+Sientes @Sintoma el @Zona cuando @Habito
+Tienes @Sintoma el @Zona al realizar @Habito
+Notas @Sintoma el @Zona cuando @Habito
+Cuando @Habito sientes @Sintoma el @Zona
+Al @Habito @Sintoma el @Zona
+Te @Sintoma el @Zona cuando @Habito
+Al @Habito te @Sintoma el @Zona
+Cuando @Habito te @Sintoma el @Zona
