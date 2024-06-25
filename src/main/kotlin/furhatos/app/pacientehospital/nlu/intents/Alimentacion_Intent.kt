@@ -2,6 +2,7 @@ package furhatos.app.pacientehospital.nlu.intents
 
 import furhatos.app.pacientehospital.nlu.entities.*
 import furhatos.nlu.Intent
+import furhatos.util.Language
 
 class Alimentacion_Describir () : Intent() {
 
@@ -45,6 +46,13 @@ class Alimento_Cuando (
 
     override fun getConfidenceThreshold(): Double {
         return 0.3
+    }
+    override fun getNegativeExamples(language: Language): List<String> {
+        return listOf("desde cuándo @Alimento" ,
+            " desde cuándo come @Alimento ",
+            " desde cuándo consume @Alimento ",
+            " desde cuándo bebe @Alimento ",
+        )
     }
 }
 

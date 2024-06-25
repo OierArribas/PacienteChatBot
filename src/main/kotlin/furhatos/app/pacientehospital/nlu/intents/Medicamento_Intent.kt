@@ -48,10 +48,9 @@ class Medicamento_Duracion (
     }
 }
 
-class Medicamento_Relacion_Sintoma_Si_No (
+class Medicamento_Relacion_Sintoma_Describir (
     val Medicamento : Medicamento? = null,
-    val Sintoma : Sintoma? = null,
-    val Zona : Zona? = null
+
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {

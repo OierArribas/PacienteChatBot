@@ -355,6 +355,7 @@ fun obtenerTermino(entrada: String): String {
 
 
 
+
         // MEDICAMENTOS
         "antidoto", "antidotos" -> "antidoto"
         "analgesico", "analgesicos" -> "analgesico"
@@ -471,10 +472,10 @@ fun obtenerTermino(entrada: String): String {
         "hacer ejercicio", "haces ejercicio" -> "hacer ejercicio"
         "meditar", "meditas" -> "meditar"
         "practicar yoga", "practicas yoga" -> "practicar yoga"
-        "correr", "corres" -> "correr"
+        "alimentar", "alimentas" -> "alimentar"
         "caminar", "caminas" -> "caminar"
         "nadar", "nadas" -> "nadar"
-        "andar en bicicleta", "andas en bicicleta" -> "andar en bicicleta"
+        "andar en bicicleta", "andas en bicicleta", "bicicleta" -> "bicicleta"
         "hacer estiramientos", "haces estiramientos" -> "hacer estiramientos"
         "practicar la respiración profunda", "practicas la respiración profunda" -> "practicar la respiración profunda"
         "ir al gimnasio", "vas al gimnasio" -> "ir al gimnasio"

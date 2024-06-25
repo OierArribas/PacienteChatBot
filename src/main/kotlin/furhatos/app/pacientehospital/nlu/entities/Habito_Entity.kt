@@ -8,7 +8,7 @@ class Habito : EnumEntity() {
         return listOf(
             "deporte: deporte, practicar deporte,practicas deporte,actividad fisica, actividad fisica",
             "trabajar: trabajar, trabajas, trabajo, trabaja",
-            "Comer:comer,comes",
+            "alimentar: alimetar, alimentas",
             "Dormir:dormir,duermes, duerme",
             "actividades de ocio",
             "Beber agua:beber agua,bebes agua",
@@ -32,7 +32,7 @@ class Habito : EnumEntity() {
             "reirse: reirse, se rie, te ries, reir",
             "orinar: orinar, mear, orinas, meas, orina, mea",
             "defecar: defecar, cagar, defecas, defeca, cagas, caga",
-            "tener relaciones: tienes relaciones, relaciones, relaciones intimas, relaciones sexuales, coito",
+            "relaciones sexuales: sexo, intimas, relaciones sexuales, coito",
             "mover la lengua: mover la lengua, mueves la lengua",
             "Mover los brazos: Mover los brazos, mueves los brazos",
             "Mover las piernas: Mover las piernas, mueves las piernas",
@@ -50,7 +50,7 @@ class Habito : EnumEntity() {
 
             "Pantalla: pantalla, estar frente a una pantalla, estar frente a la pantalla, estas frente a una pantalla, estas frente a la pantalla",
             "cafe: cafe, tomar cafe, tomas cafe, consumir cafe, consumes cafe",
-            "alcohol: alcoho, beber alcohol, bebes alcohol",
+
             "fumar:fumar,fumas",
             "drogas",
             "drogas por inyeccion",
@@ -78,7 +78,7 @@ class Habito : EnumEntity() {
             "Correr:correr,corres",
             "Caminar:caminar,caminas",
             "Nadar:nadar,nadas",
-            "Andar en bicicleta:andar en bicicleta,andas en bicicleta",
+            "bicicleta:andar en bicicleta,andas en bicicleta, bicicleta",
             "Hacer estiramientos:hacer estiramientos,haces estiramientos",
             "Practicar la respiración profunda:practicar la respiración profunda,practicas la respiración profunda",
             "Ir al gimnasio:ir al gimnasio,vas al gimnasio",

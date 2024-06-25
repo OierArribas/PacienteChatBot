@@ -94,7 +94,7 @@ val Interviewe: State = state(Parent) {
     onResponse<Desde_Cuando>{
 
         when(lastIntent){
-            Sintoma_Zona_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Cuando())}
+            Sintoma_Zona_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Duracion())}
             Habito_Si_No() -> { furhat.procesarEntrada(listOf(habito),Habito_Duracion())}
             Habito_Cantidad_Describir() -> { furhat.procesarEntrada(listOf(habito),Habito_Cantidad_Duracion())}
             Alimento_Si_No() -> { furhat.procesarEntrada(listOf(tipoAlimento),Alimento_Duracion())}
@@ -169,14 +169,12 @@ val Interviewe: State = state(Parent) {
             Alimento_Si_No() -> { furhat.procesarEntrada(listOf(tipoAlimento, sintoma, zona),Alimento_Sintoma_Relacion())}
             Habito_Si_No() -> { furhat.procesarEntrada(listOf(habito, sintoma, zona),Habito_Relacion_Sintoma_Si_No())}
             Habito_Pasado_Si_No() -> { furhat.procesarEntrada(listOf(habito, sintoma, zona),Habito_Relacion_Sintoma_Si_No())}
-            Medicamento_Si_No() -> { furhat.procesarEntrada(listOf(medicamento),Medicamento_Relacion_Sintoma_Si_No())}
-            Medicamento_Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(medicamento),Medicamento_Relacion_Sintoma_Si_No())}
+            Medicamento_Si_No() -> { furhat.procesarEntrada(listOf(medicamento),Medicamento_Relacion_Sintoma_Describir())}
+            Medicamento_Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(medicamento),Medicamento_Relacion_Sintoma_Describir())}
             else -> furhat.say("No te entiendo")
         }
 
         reentry()
-
-
     }
 
     onResponse<Extender>{
@@ -346,6 +344,17 @@ val Interviewe: State = state(Parent) {
     onResponse<Sintoma_Relacion_Describir> {
 
         lastIntent = Sintoma_Relacion_Describir()
+
+        sintoma = obtenerTermino(it.intent.Sintoma.toString())
+        zona = obtenerTermino(it.intent.Zona.toString())
+        furhat.procesarEntrada(listOf(sintoma, zona),it.intent)
+        reentry()
+
+    }
+
+    onResponse<Sintoma_Duracion> {
+
+        lastIntent = Sintoma_Duracion()
 
         sintoma = obtenerTermino(it.intent.Sintoma.toString())
         zona = obtenerTermino(it.intent.Zona.toString())

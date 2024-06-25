@@ -53,6 +53,7 @@ class Sintoma_Cuando (
         return 0.3
     }
 }
+
 class Sintoma_Duracion (
     val Sintoma : Sintoma? = null,
     val Zona : Zona? = null
@@ -133,8 +134,8 @@ class Zona_Extender (
 }
 
 class Alimento_Relacion_Sintoma_Describir (
-    val Sintoma : Sintoma? = null,
-    val Zona : Zona? = null
+    val Alimento : Alimento? = null,
+
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {

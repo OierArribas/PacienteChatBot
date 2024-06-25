@@ -21,7 +21,7 @@ val Init: State = state {
         furhat.setInputLanguage(Language.SPANISH_ES)
 
         // Set dafault confidence threshold
-        furhat.param.intentConfidenceThreshold = 0.3
+        furhat.param.intentConfidenceThreshold = 0.8
 
         // Set Output voice as spanish
         furhat.setVoice(Language.SPANISH_ES, Gender.MALE, false)
