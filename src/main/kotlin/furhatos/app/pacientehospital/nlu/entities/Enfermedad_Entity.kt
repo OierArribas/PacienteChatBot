@@ -6,7 +6,7 @@ import furhatos.util.Language
 class Enfermedad : EnumEntity() {
     override fun getEnum(lang: Language): List<String> {
         return listOf(
-            "enfermedad cardiaca: enfermedad cardiaca, enfermedades cardacas, enfermedad del corazon, enfermedades del corazon, enfermedad cardiovascular",
+            "enfermedad cardiaca: enfermedad cardiaca, enfermedades cardiacas, enfermedad del corazon, enfermedades del corazon, enfermedad cardiovascular",
             "enfermedad cronica",
             "cancer de piel",
             "leucodema oral",

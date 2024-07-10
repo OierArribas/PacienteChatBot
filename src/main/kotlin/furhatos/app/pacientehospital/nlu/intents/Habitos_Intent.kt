@@ -103,3 +103,13 @@ class Sintoma_Dificulta_Habito_Si_No (
         return 0.3
     }
 }
+
+class Habito_Relacion_Sintoma_Describir (
+    val Sintoma : Sintoma? = null,
+    val Zona : Zona? = null
+) : Intent() {
+
+    override fun getConfidenceThreshold(): Double {
+        return 0.3
+    }
+}

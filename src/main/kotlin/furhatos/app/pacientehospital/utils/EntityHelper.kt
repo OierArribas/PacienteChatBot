@@ -201,6 +201,7 @@ fun obtenerTermino(entrada: String): String {
 
 
         // SINTOMAS
+        "enfermedad cardicaca", "enfermedades cardíacas","enfermedad del corazon", "enfermedades del corazon", "enfermedad cardiovascular"-> "enfermedad cardiaca"
         "herida", "heridas" -> "herida"
         "dolor", "dolores", "daño" -> "dolor"
         "debilidad muscular", "debilidad" -> "debilidad"
@@ -454,7 +455,7 @@ fun obtenerTermino(entrada: String): String {
         "pantalla", "estar frente a una pantalla", "estar frente a la pantalla", "estas frente a una pantalla", "estas frente a la pantalla" -> "pantalla"
         "cafe", "tomar cafe", "tomas cafe", "consumir cafe", "consumes cafe" -> "cafe"
         "alcohol", "beber alcohol", "bebes alcohol" -> "alcohol"
-        "fumar", "fumas" -> "fumar"
+        "fumar", "fumas", "fuma" -> "fumar"
         "siesta", "echar la siesta", "echas la siesta", "hacer siestas", "tomar una siesta", "tomas la siesta", "tomas siestas" -> "siesta"
         "trabajar", "trabajas" -> "trabajar"
         "estudiar", "estudias" -> "estudiar"

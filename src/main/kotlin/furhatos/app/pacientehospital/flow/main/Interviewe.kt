@@ -72,13 +72,14 @@ val Interviewe: State = state(Parent) {
 
         intent = entrada.toString().split("{")[0]
         clave.add(intent)
-        say(intent)
+        //say(intent)
 
 
         for (entidad in listaEntidades) {
-            if (entidad != "null"){
-                say(entidad)
+
+            if (entidad != null){
                 clave.add(entidad)
+               // say(entidad)
             }
 
         }
@@ -114,7 +115,7 @@ val Interviewe: State = state(Parent) {
     onResponse<Anteriormente_Pregunta>{
 
         when(lastIntent){
-            Sintoma_Zona_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Antecedente_Si_No())}
+            Sintoma_Zona_Si_No(), Sintoma_Duracion(), Sintoma_Cuando(), Sintoma_Zona_Extender(), Sintoma_Cantidad_Describir(), Sintoma_Evolucion_Describir() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Antecedente_Si_No())}
             Habito_Si_No() -> { furhat.procesarEntrada(listOf(habito),Habito_Pasado_Si_No())}
             Enfermedad_Si_No() -> { furhat.procesarEntrada(listOf(enfermedad),Antecedente_Si_No())}
             Enfermedad_Describir() -> { furhat.procesarEntrada(listOf(),Antecedente_Describir())}
@@ -179,7 +180,7 @@ val Interviewe: State = state(Parent) {
 
     onResponse<Extender>{
         when(lastIntent){
-            Sintoma_Zona_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Zona_Extender())}
+            Sintoma_Zona_Si_No(), Sintoma_Duracion(), Sintoma_Cuando(), Sintoma_Zona_Extender(), Sintoma_Cantidad_Describir(), Sintoma_Evolucion_Describir() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Zona_Extender())}
             Sintoma_Antecedente_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Zona_Extender())}
             Habito_Si_No() -> { furhat.procesarEntrada(listOf(habito),Habito_Extender())}
             Habito_Pasado_Si_No() -> { furhat.procesarEntrada(listOf(habito),Habito_Extender())}
@@ -194,7 +195,7 @@ val Interviewe: State = state(Parent) {
 
     onResponse<Intensidad>{
         when(lastIntent){
-            Sintoma_Zona_Si_No() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Intensidad_Describir())}
+            Sintoma_Zona_Si_No(), Sintoma_Duracion(), Sintoma_Cuando(), Sintoma_Zona_Extender(), Sintoma_Cantidad_Describir(), Sintoma_Evolucion_Describir() -> { furhat.procesarEntrada(listOf(sintoma,zona),Sintoma_Intensidad_Describir())}
             else -> furhat.say("No te entiendo")
         }
 
@@ -275,16 +276,7 @@ val Interviewe: State = state(Parent) {
 
     }
 
-    onResponse<Sintoma_Zona_Si_No> {
 
-        lastIntent = Sintoma_Zona_Si_No()
-
-        sintoma = obtenerTermino(it.intent.Sintoma.toString())
-        zona = obtenerTermino(it.intent.Zona.toString())
-        furhat.procesarEntrada(listOf(sintoma, zona),it.intent)
-        reentry()
-
-    }
 
     onResponse<Sintoma_Antecedente_Si_No> {
 
@@ -319,16 +311,7 @@ val Interviewe: State = state(Parent) {
 
     }
 
-    onResponse<Sintoma_Cantidad_Describir> {
 
-        lastIntent = Sintoma_Cantidad_Describir()
-
-        sintoma = obtenerTermino(it.intent.Sintoma.toString())
-        zona = obtenerTermino(it.intent.Zona.toString())
-        furhat.procesarEntrada(listOf(sintoma, zona),it.intent)
-        reentry()
-
-    }
 
     onResponse<Sintoma_Intensidad_Describir> {
 
@@ -386,11 +369,35 @@ val Interviewe: State = state(Parent) {
 
     }
 
-
+/*
     onResponse<Zona_Extender> {
 
         lastIntent = Zona_Extender()
 
+        zona = obtenerTermino(it.intent.Zona.toString())
+        furhat.procesarEntrada(listOf(sintoma, zona),it.intent)
+        reentry()
+
+    }
+
+ */
+
+    onResponse<Sintoma_Cantidad_Describir> {
+
+        lastIntent = Sintoma_Cantidad_Describir()
+
+        sintoma = obtenerTermino(it.intent.Sintoma.toString())
+        zona = obtenerTermino(it.intent.Zona.toString())
+        furhat.procesarEntrada(listOf(sintoma, zona),it.intent)
+        reentry()
+
+    }
+
+    onResponse<Sintoma_Zona_Si_No> {
+
+        lastIntent = Sintoma_Zona_Si_No()
+
+        sintoma = obtenerTermino(it.intent.Sintoma.toString())
         zona = obtenerTermino(it.intent.Zona.toString())
         furhat.procesarEntrada(listOf(sintoma, zona),it.intent)
         reentry()
@@ -481,6 +488,17 @@ val Interviewe: State = state(Parent) {
         habito = obtenerTermino(it.intent.Habito.toString())
         furhat.procesarEntrada(listOf(habito), it.intent)
         reentry()
+    }
+
+    onResponse<Habito_Relacion_Sintoma_Describir>{
+
+        lastIntent = Habito_Relacion_Sintoma_Describir()
+
+        zona = obtenerTermino(it.intent.Zona.toString())
+        sintoma = obtenerTermino(it.intent.Sintoma.toString())
+        furhat.procesarEntrada(listOf(habito, sintoma, zona), it.intent)
+        reentry()
+
     }
 
     onResponse<Habito_Relacion_Sintoma_Si_No>{
@@ -618,24 +636,9 @@ val Interviewe: State = state(Parent) {
     //*----------------- ENFERMEDADES -------------------*//
     //*--------------------------------------------------*//
 
-    onResponse<Enfermedad_Describir>{
 
-        lastIntent = Enfermedad_Describir()
 
-        furhat.procesarEntrada(listOf(), it.intent)
-        reentry()
 
-    }
-
-    onResponse<Enfermedad_Si_No>{
-
-        lastIntent = Enfermedad_Si_No()
-
-        enfermedad = obtenerTermino(it.intent.Enfermedad.toString())
-        furhat.procesarEntrada(listOf(enfermedad), it.intent)
-        reentry()
-
-    }
 
     onResponse<Antecedente_Si_No>{
 
@@ -735,6 +738,25 @@ val Interviewe: State = state(Parent) {
 
     }
 
+    onResponse<Enfermedad_Si_No>{
+
+        lastIntent = Enfermedad_Si_No()
+
+        enfermedad = obtenerTermino(it.intent.Enfermedad.toString())
+        furhat.procesarEntrada(listOf(enfermedad), it.intent)
+        reentry()
+
+    }
+
+    onResponse<Enfermedad_Describir>{
+
+        lastIntent = Enfermedad_Describir()
+
+        furhat.procesarEntrada(listOf(), it.intent)
+        reentry()
+
+    }
+
     //*--------------------------------------------------*//
     //*----------------- MEDICAMENTOS -------------------*//
     //*--------------------------------------------------*//
@@ -798,6 +820,16 @@ val Interviewe: State = state(Parent) {
 
     }
 
+    onResponse<Medicamento_Relacion_Sintoma_Describir>{
+
+        lastIntent = Medicamento_Relacion_Sintoma_Describir()
+
+        medicamento = obtenerTermino(it.intent.Medicamento.toString())
+        furhat.procesarEntrada(listOf(medicamento), it.intent)
+        reentry()
+
+    }
+
     //*--------------------------------------------------*//
     //*------------------- MEDIDAS ----------------------*//
     //*--------------------------------------------------*//
@@ -814,15 +846,13 @@ val Interviewe: State = state(Parent) {
     }
 
     //*--------------------------------------------------*//
-    //*------------------- SUCESOS ----------------------*//
+    //*------------------ DESPEDIDA ---------------------*//
     //*--------------------------------------------------*//
 
-    onResponse<Suceso_Si_No> {
+    onResponse<Despedida> {
 
-        suceso = obtenerTermino(it.intent.Suceso.toString())
-        furhat.procesarEntrada(listOf(suceso), it.intent)
-
-        reentry()
+        furhat.say("Muchas gracias doctor.")
+        goto(Idle)
     }
 
 

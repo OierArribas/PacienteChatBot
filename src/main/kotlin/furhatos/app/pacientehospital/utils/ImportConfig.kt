@@ -4,9 +4,47 @@ import org.example.utils.CustomMutableList
 import java.io.File
 import kotlin.random.Random
 
+fun findFileByName(dir: File, fileName: String): File? {
+    if (!dir.isDirectory) {
+        return null
+    }
+
+    val files = dir.listFiles() ?: return null
+
+    for (file in files) {
+        if (file.isDirectory) {
+            val found = findFileByName(file, fileName)
+            if (found != null) {
+                return found
+            }
+        } else if (file.name == fileName) {
+            return file
+        }
+    }
+
+    return null
+}
+
 fun importResponseMap(): MutableMap<List<String>, String> {
 
-    val filepath = "src/main/ResponseConfig/configFile"
+    val fileNameToFind = "configFile"
+    val startingDir = File(".")
+
+    val foundFile = findFileByName(startingDir, fileNameToFind)
+
+    if (foundFile != null) {
+        println("Archivo encontrado en: ${foundFile.absolutePath}")
+    } else {
+        println("Archivo no encontrado.")
+    }
+
+    val filepath = "./configFile"
+
+    val currentDir = File(".")
+
+    // Construir la ruta relativa desde el directorio de trabajo actual
+    val relativeFilePath = "configFile"
+    val filePath = File(currentDir, relativeFilePath)
 
     val mapa = mutableMapOf<List<String>, String>()
 
@@ -14,24 +52,28 @@ fun importResponseMap(): MutableMap<List<String>, String> {
 
     var intent = ""
 
-    File(filepath).forEachLine { linea ->
+    foundFile?.forEachLine { linea ->
 
-        if (linea.isNotBlank()){
+        if (linea.isNotBlank()) {
 
             val divisor = CustomMutableList<String>()
             divisor.addAll(linea.split(":"))
 
             when (divisor[0]) {
-                "Intent" -> {key[0] = divisor[1]
-                        intent = divisor[1]}
+                "Intent" -> {
+                    key[0] = divisor[1]
+                    intent = divisor[1]
+                }
+
                 "Entities" -> {
 
-                    for (e in divisor[1].split(",")){
+                    for (e in divisor[1].split(",")) {
                         key.add(e)
                     }
                 }
+
                 else -> {
-                    mapa[key.toList()]=divisor[0]
+                    mapa[key.toList()] = divisor[0]
 
                     key.clear()
                     key.add(intent)

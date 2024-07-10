@@ -17,7 +17,7 @@ class Sintoma_Zona_Si_No (
 ) : Intent() {
 
     override fun getConfidenceThreshold(): Double {
-        return 0.3
+        return 0.5
     }
 }
 

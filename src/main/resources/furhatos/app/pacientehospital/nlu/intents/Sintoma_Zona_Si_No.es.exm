@@ -104,7 +104,6 @@ Has sentido @Sintoma en @Zona
 Has experimentado @Sintoma en @Zona
 Has notado @Sintoma en @Zona
 Has detectado @Sintoma en @Zona
-Y @Sintoma
 Ha sufido @Sintoma de @Zona
 Has sufido @Sintoma de @Zona
 Ha notado @Sintoma de @Zona
@@ -114,7 +113,4 @@ Has tenido @Sintoma
 Ha sentido @Sintoma
 Ha notado @Sintoma
 Ha tenido @Sintoma o @Sintoma
-@Sintoma
-¿ha tenido alguna vez sensación de ardor?
-¿ha tenido alguna vez dificultades para respirar?
-¿ha tenido alguna vez dolor en el pecho?
+Y @Sintoma

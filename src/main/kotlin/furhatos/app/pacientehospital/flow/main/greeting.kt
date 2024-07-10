@@ -13,14 +13,14 @@ import furhatos.util.Language
 val Greeting: State = state(Parent) {
     onEntry {
         furhat.setInputLanguage(Language.SPANISH_ES, Language.ENGLISH_US)
-        furhat.say("Entering ")
+        furhat.say("Hola, Buenos dias! ")
         furhat.listen()
     }
 
 
 
     onResponse<Motivo_De_Consulta> {
-        furhat.say("Mi problema es blablabla")
+        //furhat.say("Buenas, soy un estudiante de ingeniería que vive actualmente en su casa con su madre, también trabajo a tiempo parcial como cartero. He venido porque últimamente estaba notando un dolor en el pecho que me preocupa bastante.")
         goto(Interviewe)
 
     }
